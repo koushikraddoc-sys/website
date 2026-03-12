@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Koushik | MSK & Interventional Radiologist | Hyderabad</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#07101e;--navy-mid:#0b1626;--navy-light:#112035;
+  --gold:#c8a84b;--gold-lt:#e8c97a;--gold-pale:#f5e8c0;
+  --teal:#12828f;--teal-lt:#1eb8cc;
+  --white:#f5f3ee;--gray:#7a93b0;
+  --glass:rgba(255,255,255,.035);--gb:rgba(200,168,75,.18);--tb:rgba(18,130,143,.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;transition:background .4s,box-shadow .4s}
+nav.scrolled{background:rgba(7,16,30,.97);box-shadow:0 1px 0 var(--gb)}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--gold-lt);letter-spacing:.04em}
+.nav-logo-sub{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-top:.1rem}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--gold-lt)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:.52rem 1.3rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;text-decoration:none;display:inline-block;transition:all .3s;font-family:'DM Sans',sans-serif}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at 65% 50%,rgba(18,130,143,.11) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 50% at 15% 80%,rgba(200,168,75,.07) 0%,transparent 50%),
+    linear-gradient(140deg,#07101e 0%,#0b1c30 55%,#071420 100%)}
+.hero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(200,168,75,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.03) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:radial-gradient(ellipse 90% 90% at 40% 50%,black 20%,transparent 85%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:orb-float 9s ease-in-out infinite;pointer-events:none}
+.o1{width:550px;height:550px;background:rgba(18,130,143,.09);right:-60px;top:-80px}
+.o2{width:380px;height:380px;background:rgba(200,168,75,.06);right:180px;bottom:-60px;animation-delay:3s}
+.o3{width:280px;height:280px;background:rgba(30,184,204,.05);left:8%;top:35%;animation-delay:1.5s}
+@keyframes orb-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
+
+/* Animated radiology diagram right side */
+.hero-diagram{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:460px;height:460px;pointer-events:none}
+.ring{position:absolute;border-radius:50%;border:1px solid;top:50%;left:50%;transform:translate(-50%,-50%);animation:ring-pulse 4s ease-in-out infinite}
+.ring:nth-child(1){width:100%;height:100%;border-color:rgba(200,168,75,.14)}
+.ring:nth-child(2){width:76%;height:76%;border-color:rgba(18,130,143,.2);animation-delay:.6s}
+.ring:nth-child(3){width:54%;height:54%;border-color:rgba(200,168,75,.24);animation-delay:1.2s}
+@keyframes ring-pulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.025)}}
+.dot-orbit{position:absolute;top:50%;left:50%;width:7px;height:7px;border-radius:50%;background:var(--gold);transform-origin:0 0;animation:orbit 11s linear infinite}
+.dot-orbit.t{background:var(--teal-lt);width:5px;height:5px;animation-duration:16s;animation-direction:reverse}
+.dot-orbit.s{background:#fff;width:4px;height:4px;animation-duration:20s;animation-delay:2s}
+@keyframes orbit{from{transform:rotate(0deg) translateX(225px) rotate(0deg)}to{transform:rotate(360deg) translateX(225px) rotate(-360deg)}}
+.diag-label{position:absolute;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap;animation:lbl-fade 5s ease-in-out infinite}
+.dl-t{top:3%;left:50%;transform:translateX(-50%)}
+.dl-r{top:50%;right:-1rem;transform:translateY(-50%);animation-delay:.8s}
+.dl-b{bottom:3%;left:50%;transform:translateX(-50%);animation-delay:1.6s}
+.dl-l{top:50%;left:-1rem;transform:translateY(-50%);animation-delay:2.4s}
+@keyframes lbl-fade{0%,100%{opacity:.35}50%{opacity:1}}
+.diag-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(18,130,143,.2) 0%,rgba(7,16,30,.9) 70%);border:1px solid rgba(200,168,75,.3);display:flex;align-items:center;justify-content:center}
+
+/* scan line */
+.scan-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(18,130,143,.7),transparent);animation:scan 4.5s linear infinite;z-index:1}
+@keyframes scan{0%{top:-2%}100%{top:102%}}
+
+.hero-content{position:relative;z-index:2;max-width:600px;padding:0 4rem;animation:hero-in 1.1s cubic-bezier(.16,1,.3,1) both}
+@keyframes hero-in{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.badge-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1.4rem;padding:.38rem 1rem;border:1px solid rgba(18,130,143,.35);background:rgba(18,130,143,.07)}
+.badge-tag::before{content:'';width:16px;height:1px;background:var(--teal-lt)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.02;color:var(--white)}
+.hero-name .g{color:var(--gold-lt);font-style:italic}
+.hero-role-primary{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,1.8vw,1.4rem);color:var(--teal-lt);font-weight:400;letter-spacing:.04em;margin:.45rem 0 .2rem;line-height:1.3}
+.hero-role-secondary{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(245,243,238,.45);font-weight:300;font-style:italic;letter-spacing:.03em;margin-bottom:1.8rem}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--gold-pale);margin-bottom:1.4rem;line-height:1.4}
+.hero-desc{font-size:.87rem;color:var(--gray);line-height:1.85;margin-bottom:2.2rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.2rem}
+.pill{padding:.3rem .82rem;border:1px solid rgba(18,130,143,.38);background:rgba(18,130,143,.07);font-size:.63rem;letter-spacing:.09em;color:var(--teal-lt);text-transform:uppercase;font-weight:500}
+.pill.g{border-color:rgba(200,168,75,.35);background:rgba(200,168,75,.07);color:var(--gold)}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-p{background:linear-gradient(135deg,var(--gold),#a8792a);color:var(--navy);padding:.85rem 1.9rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;cursor:pointer;border:none;text-decoration:none;display:inline-block;transition:all .3s;font-family:'DM Sans',sans-serif}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(200,168,75,.32)}
+.btn-o{background:transparent;color:var(--white);padding:.85rem 1.9rem;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,.18);text-decoration:none;display:inline-block;transition:all .3s;font-family:'DM Sans',sans-serif}
+.btn-o:hover{border-color:var(--white);background:rgba(255,255,255,.05)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);animation:fade-in 2s 1.5s both}
+.s-line-a{width:1px;height:38px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+
+/* STATS */
+.stats{background:linear-gradient(to right,rgba(18,130,143,.09),rgba(200,168,75,.07),rgba(18,130,143,.09));border-top:1px solid var(--gb);border-bottom:1px solid var(--gb);padding:2.2rem 4rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;text-align:center}
+.stat .num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--gold-lt);display:block;line-height:1}
+.stat .lbl{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-top:.4rem}
+
+/* SECTIONS */
+section{padding:7rem 4rem}
+.s-tag{font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:block}
+.s-ln{width:44px;height:2px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:1.8rem}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:1.3rem}
+.s-title em{color:var(--gold-lt);font-style:italic}
+.s-desc{font-size:.87rem;color:var(--gray);line-height:1.9;max-width:540px}
+
+/* PROMISE */
+.promise{background:linear-gradient(to bottom,var(--navy),var(--navy-mid));display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.p-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.p-card{background:var(--glass);border:1px solid var(--gb);padding:1.8rem 1.5rem;position:relative;overflow:hidden;transition:all .4s}
+.p-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .4s}
+.p-card:hover{transform:translateY(-4px);border-color:rgba(200,168,75,.3)}
+.p-card:hover::before{height:100%}
+.p-icon{font-size:1.9rem;margin-bottom:.9rem}
+.p-card h4{font-family:'Cormorant Garamond',serif;font-size:1.22rem;color:var(--gold-lt);margin-bottom:.4rem}
+.p-card p{font-size:.8rem;color:var(--gray);line-height:1.75}
+
+/* SERVICES */
+.services-sec{background:var(--navy-mid)}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.svc-card{background:var(--navy-light);border:1px solid var(--gb);overflow:hidden;transition:all .45s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;position:relative}
+.svc-card:hover{transform:translateY(-7px);border-color:rgba(200,168,75,.4);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+
+/* Service card visual banners - pure CSS */
+.svc-banner{width:100%;height:200px;position:relative;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.svc-banner svg{position:absolute;inset:0;width:100%;height:100%}
+.svc-banner-icon{position:relative;z-index:2;font-size:4rem;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));animation:icon-breathe 4s ease-in-out infinite}
+@keyframes icon-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.svc-num-bg{position:absolute;bottom:.5rem;right:1rem;font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:600;opacity:.15;line-height:1;z-index:1;color:#fff}
+.svc-badge{position:absolute;top:.9rem;right:1rem;background:var(--gold);color:var(--navy);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .65rem;font-weight:700;z-index:3}
+.svc-badge.tl{background:var(--teal-lt);color:#07101e}
+.svc-num-label{position:absolute;top:.9rem;left:1rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:rgba(255,255,255,.7);z-index:3;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.svc-body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:.6rem}
+.svc-card p{font-size:.79rem;color:var(--gray);line-height:1.75;flex:1;margin-bottom:1rem}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.st{font-size:.6rem;padding:.18rem .55rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(18,130,143,.3);color:var(--teal-lt);background:rgba(18,130,143,.06)}
+.st.g{border-color:rgba(200,168,75,.3);color:var(--gold);background:rgba(200,168,75,.06)}
+
+/* Featured card */
+.svc-card.feat{border-color:rgba(200,168,75,.35);background:linear-gradient(160deg,rgba(200,168,75,.05),var(--navy-light))}
+
+/* MSK */
+.msk-sec{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;overflow:hidden}
+.msk-sec::before{content:'MSK';position:absolute;right:-1rem;bottom:-2rem;font-family:'Cormorant Garamond',serif;font-size:18rem;font-weight:600;color:rgba(18,130,143,.04);line-height:1;pointer-events:none}
+/* MSK visual - pure CSS */
+.msk-visual{position:relative;z-index:1}
+.msk-diagram{width:100%;height:420px;border:1px solid var(--tb);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(18,130,143,.1) 0%,rgba(7,16,30,.95) 60%,rgba(18,130,143,.06) 100%)}
+.msk-diagram::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(18,130,143,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(18,130,143,.06) 1px,transparent 1px);
+  background-size:30px 30px}
+.msk-body-svg{position:relative;z-index:2;opacity:.9}
+.msk-pulse{position:absolute;border-radius:50%;border:1px solid rgba(18,130,143,.4);animation:msk-ring 3s ease-in-out infinite}
+.msk-pulse:nth-child(1){width:200px;height:200px;animation-delay:0s}
+.msk-pulse:nth-child(2){width:300px;height:300px;animation-delay:.5s;border-color:rgba(200,168,75,.2)}
+.msk-pulse:nth-child(3){width:380px;height:380px;animation-delay:1s;border-color:rgba(18,130,143,.15)}
+@keyframes msk-ring{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.02)}}
+.msk-badge-box{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(7,16,30,.85);border:1px solid var(--tb);padding:.8rem 1.2rem;z-index:3}
+.msk-badge-box p{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-lt)}
+.msk-badge-box strong{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold-lt);display:block;margin-top:.2rem}
+.msk-content{position:relative;z-index:1}
+.msk-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:2rem}
+.msk-item{border:1px solid rgba(18,130,143,.2);padding:1.2rem;background:var(--glass);transition:all .3s;position:relative;overflow:hidden}
+.msk-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--teal),transparent);transform:scaleX(0);transition:transform .3s}
+.msk-item:hover{border-color:rgba(18,130,143,.5);background:rgba(18,130,143,.08);transform:translateX(3px)}
+.msk-item:hover::after{transform:scaleX(1)}
+.msk-item h5{font-size:.82rem;color:var(--teal-lt);margin-bottom:.35rem}
+.msk-item p{font-size:.73rem;color:var(--gray);line-height:1.6}
+.msk-cta{background:linear-gradient(135deg,rgba(18,130,143,.15),rgba(18,130,143,.05));border:1px solid rgba(18,130,143,.3);padding:1.8rem;margin-top:2rem}
+.msk-cta h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);margin-bottom:.4rem}
+.msk-cta p{font-size:.8rem;color:var(--gray);line-height:1.7;margin-bottom:1.2rem}
+
+/* TECHNOLOGY */
+.tech-sec{background:var(--navy-mid)}
+.tech-layout{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;margin-top:4rem}
+/* Tech showcase - CSS art */
+.tech-showcase{position:sticky;top:7rem;width:100%;height:460px;border:1px solid var(--gb);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(7,16,30,.95) 0%,rgba(11,22,38,.9) 60%,rgba(18,130,143,.08) 100%);
+  position:relative}
+.tech-showcase::before{content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(200,168,75,.06) 1px,transparent 1px);
+  background-size:22px 22px}
+.tech-showcase-art{position:relative;z-index:2;text-align:center}
+.tech-showcase-art .big-icon{font-size:6rem;display:block;animation:tech-float 4s ease-in-out infinite}
+@keyframes tech-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.tech-showcase-label{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-lt);margin-top:1rem;font-style:italic}
+.tech-showcase-sub{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);margin-top:.4rem}
+.tech-showcase-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.tsr{position:absolute;border-radius:50%;border:1px solid;animation:tsr-pulse 3s ease-in-out infinite}
+.tsr:nth-child(1){width:200px;height:200px;border-color:rgba(200,168,75,.15)}
+.tsr:nth-child(2){width:310px;height:310px;border-color:rgba(18,130,143,.12);animation-delay:.6s}
+.tsr:nth-child(3){width:420px;height:420px;border-color:rgba(200,168,75,.08);animation-delay:1.2s}
+@keyframes tsr-pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.01)}}
+.tech-showcase-bottom{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;text-align:center;z-index:2;
+  background:rgba(7,16,30,.7);border:1px solid var(--tb);padding:.8rem}
+.tech-showcase-bottom p{font-size:.7rem;color:var(--teal-lt);letter-spacing:.1em}
+.tech-cards{display:flex;flex-direction:column;gap:1.3rem}
+.tech-card{display:flex;gap:1.5rem;align-items:flex-start;background:var(--glass);border:1px solid var(--gb);padding:1.8rem;transition:all .4s;position:relative;overflow:hidden}
+.tech-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--teal),var(--gold));transform:scaleY(0);transition:transform .4s;transform-origin:bottom}
+.tech-card:hover{border-color:rgba(18,130,143,.38);transform:translateX(4px)}
+.tech-card:hover::before{transform:scaleY(1)}
+/* Tech card icon box - CSS */
+.tc-icon-box{width:88px;height:78px;flex-shrink:0;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;overflow:hidden}
+.tc-icon-box::before{content:'';position:absolute;inset:0;opacity:.12}
+.tc-spine .tc-icon-box::before{background:linear-gradient(135deg,#c8a84b,#12828f)}
+.tc-rfa .tc-icon-box::before{background:linear-gradient(135deg,#e83a3a,#c8a84b)}
+.tc-mw .tc-icon-box::before{background:linear-gradient(135deg,#1eb8cc,#12828f)}
+.tc-laser .tc-icon-box::before{background:linear-gradient(135deg,#7c3aed,#1eb8cc)}
+.tc-body h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold-lt);margin-bottom:.3rem}
+.tc-body p{font-size:.78rem;color:var(--gray);line-height:1.7}
+.tc-tag{display:inline-block;margin-top:.5rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-lt);border:1px solid rgba(18,130,143,.3);padding:.14rem .5rem;background:rgba(18,130,143,.07)}
+
+/* PROCESS */
+.process-sec{background:var(--navy);display:grid;grid-template-columns:5fr 7fr;gap:5rem;align-items:start}
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:1.8rem;padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:all .3s}
+.step:hover{padding-left:.4rem}
+.step:last-child{border-bottom:none}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:rgba(200,168,75,.15);line-height:1;min-width:55px;transition:color .3s}
+.step:hover .step-n{color:var(--gold)}
+.step-body h4{font-size:.88rem;color:var(--white);margin-bottom:.35rem}
+.step-body p{font-size:.78rem;color:var(--gray);line-height:1.75}
+
+/* LOCATIONS */
+.loc-sec{background:var(--navy-mid)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.loc-card{background:var(--navy-light);border:1px solid var(--gb);overflow:hidden;transition:all .4s}
+.loc-card:hover{transform:translateY(-4px);border-color:rgba(200,168,75,.3);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+/* Location card visual banner - CSS */
+.loc-banner{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.loc-banner svg{position:absolute;inset:0;width:100%;height:100%}
+.loc-banner-content{position:relative;z-index:2;text-align:center}
+.loc-banner-icon{font-size:3.5rem;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.loc-banner-name{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold-lt);margin-top:.4rem;letter-spacing:.04em}
+.loc-badge{position:absolute;top:.9rem;left:1rem;background:var(--gold);color:var(--navy);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.22rem .65rem;font-weight:700;z-index:3}
+.loc-body{padding:1.8rem}
+.loc-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-lt);margin-bottom:.15rem}
+.loc-area{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1.3rem;font-weight:500}
+.loc-row{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.8rem}
+.loc-ico{color:var(--gold);font-size:.85rem;margin-top:.1rem;min-width:15px}
+.loc-row p{font-size:.77rem;color:var(--gray);line-height:1.6}
+.loc-btn{display:block;text-align:center;margin-top:1.4rem;border:1px solid var(--gold);color:var(--gold);padding:.68rem 1.2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .3s;font-weight:600;font-family:'DM Sans',sans-serif}
+.loc-btn:hover{background:var(--gold);color:var(--navy)}
+.phone-strip{margin-top:2.5rem;background:linear-gradient(135deg,rgba(200,168,75,.12),rgba(18,130,143,.1));border:1px solid rgba(200,168,75,.25);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;grid-column:1/-1}
+.ph-lbl{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:.2rem}
+.ph-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold-lt);text-decoration:none;transition:color .3s}
+.ph-num:hover{color:var(--gold)}
+
+/* CTA */
+.cta-sec{text-align:center;padding:8rem 4rem;background:linear-gradient(160deg,#060a14,#0a1320,#060a14);position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(200,168,75,.07) 0%,transparent 65%)}
+.cta-sec .s-title{max-width:680px;margin:0 auto 1.2rem}
+.cta-sec .s-desc{margin:0 auto 2.8rem;text-align:center}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#050810;border-top:1px solid var(--gb);padding:3rem 4rem;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+footer h5{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.f-brand p{font-size:.79rem;color:var(--gray);line-height:1.85;margin-top:.9rem;max-width:280px}
+.f-links{display:flex;flex-direction:column;gap:.55rem}
+.f-links a{font-size:.79rem;color:var(--gray);text-decoration:none;transition:color .3s}
+.f-links a:hover{color:var(--white)}
+.foot-bot{background:#030508;padding:1.1rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.04);flex-wrap:wrap;gap:.5rem}
+.foot-bot p{font-size:.68rem;color:rgba(122,147,176,.4)}
+
+/* FLOAT BTN */
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:300;background:linear-gradient(135deg,var(--gold),#9b6e18);color:var(--navy);padding:.85rem 1.5rem;display:flex;align-items:center;gap:.55rem;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-decoration:none;box-shadow:0 10px 40px rgba(200,168,75,.45);animation:pulse-glow 3s ease-in-out infinite;transition:transform .3s;font-family:'DM Sans',sans-serif}
+.float-btn:hover{transform:scale(1.05)}
+.ph-ico{font-size:1rem;animation:ring-ico 2.5s ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{box-shadow:0 10px 40px rgba(200,168,75,.45)}50%{box-shadow:0 10px 65px rgba(200,168,75,.65)}}
+@keyframes ring-ico{0%,100%{transform:rotate(0)}8%{transform:rotate(-14deg)}16%{transform:rotate(14deg)}24%{transform:rotate(0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .7s,transform .7s}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .7s,transform .7s}
+.reveal.vis,.reveal-l.vis,.reveal-r.vis{opacity:1;transform:none}
+
+@media(max-width:960px){
+  nav{padding:.9rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  section{padding:4.5rem 1.5rem}
+  .hero-content{padding:0 1.5rem;max-width:100%}
+  .hero-diagram{display:none}
+  .stats{grid-template-columns:repeat(3,1fr);padding:1.5rem}
+  .promise,.msk-sec,.process-sec{grid-template-columns:1fr;gap:3rem}
+  .p-cards,.msk-grid{grid-template-columns:1fr}
+  .svc-head{grid-template-columns:1fr;gap:1.5rem}
+  .svc-grid{grid-template-columns:1fr}
+  .tech-layout{grid-template-columns:1fr;gap:2rem}
+  .tech-showcase{height:260px;position:relative;top:0}
+  .loc-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;gap:2rem;padding:2rem 1.5rem}
+  .foot-bot{padding:1rem 1.5rem;flex-direction:column;text-align:center}
+  .phone-strip{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div>
+    <div class="nav-logo-main">Dr. Koushik</div>
+    <div class="nav-logo-sub">Sports · Diagnostic · Minimally Invasive Clinics</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#msk">MSK Sports</a></li>
+    <li><a href="#tech">Technology</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+919897349734" class="nav-cta">📞 Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="scan-line"></div>
+
+  <!-- Animated radiology diagram -->
+  <div class="hero-diagram">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="dot-orbit"></div>
+    <div class="dot-orbit t"></div>
+    <div class="dot-orbit s"></div>
+    <div class="diag-center">
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <circle cx="45" cy="45" r="40" stroke="#c8a84b" stroke-width=".6" opacity=".4"/>
+        <line x1="45" y1="8" x2="45" y2="82" stroke="#c8a84b" stroke-width=".5" opacity=".5"/>
+        <line x1="8" y1="45" x2="82" y2="45" stroke="#c8a84b" stroke-width=".5" opacity=".5"/>
+        <rect x="36" y="22" width="18" height="46" rx="2.5" fill="rgba(200,168,75,.12)" stroke="#c8a84b" stroke-width=".8"/>
+        <rect x="22" y="36" width="46" height="18" rx="2.5" fill="rgba(18,130,143,.12)" stroke="#1eb8cc" stroke-width=".8"/>
+        <circle cx="45" cy="45" r="7" fill="#c8a84b" opacity=".7"/>
+        <circle cx="45" cy="45" r="3.5" fill="#07101e"/>
+        <circle cx="45" cy="8" r="2" fill="#1eb8cc"/>
+        <circle cx="82" cy="45" r="2" fill="#1eb8cc"/>
+        <circle cx="45" cy="82" r="2" fill="#c8a84b"/>
+        <circle cx="8" cy="45" r="2" fill="#c8a84b"/>
+      </svg>
+    </div>
+    <div class="diag-label dl-t">Spine</div>
+    <div class="diag-label dl-r">Oncology</div>
+    <div class="diag-label dl-b">MSK Sports</div>
+    <div class="diag-label dl-l">Thyroid</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="badge-tag">Interventional Radiology · Hyderabad</div>
+    <h1 class="hero-name">Dr. <span class="g">Koushik</span></h1>
+    <p class="hero-role-primary">MSK &amp; Interventional Radiologist</p>
+    <p class="hero-role-secondary">Sports Interventional Radiologist · Diagnostic, Intervention &amp; Minimally Invasive Clinics</p>
+    <p class="hero-tagline">"No Pain. No Scar. No Admission."</p>
+    <p class="hero-desc">Precision image-guided interventions that heal without surgery. Advanced diagnostics meet minimally invasive therapy — for spine, MSK, oncology, thyroid, varicose veins and beyond.</p>
+    <div class="hero-pills">
+      <span class="pill g">Spine Injections</span>
+      <span class="pill">MSK &amp; Sports</span>
+      <span class="pill">Oncology Pain</span>
+      <span class="pill g">Thyroid RFA</span>
+      <span class="pill">Varicose Veins</span>
+      <span class="pill">Day Care</span>
+    </div>
+    <div class="hero-btns">
+      <a href="tel:+919897349734" class="btn-p">📞 Call +91 98973 49734</a>
+      <a href="#services" class="btn-o">Explore Treatments</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="s-line-a"></div>Scroll
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><span class="num">5000+</span><div class="lbl">Procedures Done</div></div>
+  <div class="stat"><span class="num">0</span><div class="lbl">Surgical Cuts</div></div>
+  <div class="stat"><span class="num">Day</span><div class="lbl">Care Only</div></div>
+  <div class="stat"><span class="num">2</span><div class="lbl">Locations</div></div>
+  <div class="stat"><span class="num">15+</span><div class="lbl">Years Experience</div></div>
+</div>
+
+<!-- PROMISE -->
+<section class="promise" id="about">
+  <div class="reveal-l">
+    <span class="s-tag">Our Philosophy</span>
+    <div class="s-ln"></div>
+    <h2 class="s-title">Healing Through<br><em>Precision,</em><br>Not the Knife</h2>
+    <p class="s-desc">Dr. Koushik's Sports Diagnostic, Intervention &amp; Minimally Invasive Clinics deliver pinpoint image-guided therapies — combining sports medicine expertise with cutting-edge interventional radiology. Maximum impact, minimum invasion.</p>
+    <br><br>
+    <a href="tel:+919897349734" class="btn-p">Book a Consultation</a>
+  </div>
+  <div class="p-cards reveal-r">
+    <div class="p-card">
+      <div class="p-icon">🎯</div>
+      <h4>No Pain</h4>
+      <p>Image-guided accuracy under local anaesthesia — landing exactly where it should, gently and precisely.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🩹</div>
+      <h4>No Scar</h4>
+      <p>Hair-thin needles and micro-probes. Zero incisions, zero disfigurement, zero visible marks.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🏠</div>
+      <h4>No Admission</h4>
+      <p>Day-care only — arrive, be treated and return home the same morning. Your life continues.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">📡</div>
+      <h4>Image-Guided</h4>
+      <p>Every needle directed by live ultrasound, fluoroscopy or CT. Precision is guaranteed — always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-sec" id="services">
+  <div class="svc-head">
+    <div class="reveal-l">
+      <span class="s-tag">Clinical Specialties</span>
+      <div class="s-ln"></div>
+      <h2 class="s-title">Comprehensive<br><em>Interventional</em> Care</h2>
+    </div>
+    <p class="s-desc reveal-r">From diagnostic imaging to advanced ablation — all without an operating theatre, general anaesthesia or hospital admission. Same day. Every time.</p>
+  </div>
+  <div class="svc-grid">
+
+    <!-- SPINE -->
+    <div class="svc-card feat reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg1" cx="50%" cy="50%"><stop offset="0%" stop-color="#1a3a2a"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg1)"/><line x1="0" y1="20" x2="400" y2="20" stroke="rgba(200,168,75,.08)" stroke-width="1"/><line x1="0" y1="50" x2="400" y2="50" stroke="rgba(200,168,75,.08)" stroke-width="1"/><line x1="0" y1="80" x2="400" y2="80" stroke="rgba(200,168,75,.08)" stroke-width="1"/><line x1="0" y1="110" x2="400" y2="110" stroke="rgba(200,168,75,.08)" stroke-width="1"/><line x1="0" y1="140" x2="400" y2="140" stroke="rgba(200,168,75,.08)" stroke-width="1"/><line x1="0" y1="170" x2="400" y2="170" stroke="rgba(200,168,75,.08)" stroke-width="1"/>
+        <!-- Spine vertebrae -->
+        <rect x="165" y="30" width="70" height="22" rx="4" fill="rgba(200,168,75,.25)" stroke="#c8a84b" stroke-width="1.2"/>
+        <rect x="165" y="62" width="70" height="22" rx="4" fill="rgba(200,168,75,.22)" stroke="#c8a84b" stroke-width="1.2"/>
+        <rect x="165" y="94" width="70" height="22" rx="4" fill="rgba(200,168,75,.19)" stroke="#c8a84b" stroke-width="1.2"/>
+        <rect x="165" y="126" width="70" height="22" rx="4" fill="rgba(200,168,75,.16)" stroke="#c8a84b" stroke-width="1.2"/>
+        <rect x="165" y="155" width="70" height="22" rx="4" fill="rgba(200,168,75,.13)" stroke="#c8a84b" stroke-width="1"/>
+        <!-- Discs -->
+        <rect x="170" y="53" width="60" height="8" rx="2" fill="rgba(30,184,204,.3)"/>
+        <rect x="170" y="85" width="60" height="8" rx="2" fill="rgba(30,184,204,.3)"/>
+        <rect x="170" y="117" width="60" height="8" rx="2" fill="rgba(30,184,204,.3)"/>
+        <rect x="170" y="148" width="60" height="6" rx="2" fill="rgba(30,184,204,.25)"/>
+        <!-- Needle -->
+        <line x1="290" y1="50" x2="212" y2="89" stroke="#e8c97a" stroke-width="1.5" opacity=".85"/>
+        <circle cx="209" cy="90" r="4" fill="#e8c97a" opacity=".9"/>
+        <circle cx="209" cy="90" r="7" fill="rgba(200,168,75,.25)"/>
+        <!-- Target glow -->
+        <circle cx="200" cy="89" r="15" fill="rgba(200,168,75,.08)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        </svg>
+        <div class="svc-banner-icon">🦴</div>
+        <div class="svc-num-bg">01</div>
+        <div class="svc-num-label">01</div>
+        <div class="svc-badge">★ Core Specialty</div>
+      </div>
+      <div class="svc-body">
+        <h3>Spine Interventions</h3>
+        <p>Precision-guided epidural, nerve root, facet joint, SI joint and disc injections for acute and chronic back and neck pain — same day, no admission.</p>
+        <div class="svc-tags"><span class="st g">Epidural</span><span class="st g">Nerve Root Block</span><span class="st g">Facet Joint</span><span class="st g">SI Joint</span></div>
+      </div>
+    </div>
+
+    <!-- MSK SPORTS -->
+    <div class="svc-card reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg2" cx="50%" cy="50%"><stop offset="0%" stop-color="#0d2535"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg2)"/>
+        <!-- Running figure silhouette -->
+        <ellipse cx="190" cy="60" rx="18" ry="18" fill="rgba(18,130,143,.3)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <line x1="190" y1="78" x2="185" y2="120" stroke="#1eb8cc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="185" y1="120" x2="165" y2="155" stroke="#1eb8cc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="185" y1="120" x2="210" y2="150" stroke="#1eb8cc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="190" y1="95" x2="215" y2="105" stroke="#1eb8cc" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="190" y1="95" x2="162" y2="110" stroke="#1eb8cc" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Joint highlights -->
+        <circle cx="185" cy="120" r="8" fill="rgba(200,168,75,.2)" stroke="#c8a84b" stroke-width="1"/>
+        <circle cx="165" cy="155" r="6" fill="rgba(30,184,204,.2)" stroke="#1eb8cc" stroke-width="1"/>
+        <circle cx="210" cy="150" r="6" fill="rgba(30,184,204,.2)" stroke="#1eb8cc" stroke-width="1"/>
+        <!-- Ultrasound probe hint -->
+        <rect x="260" y="110" width="30" height="12" rx="3" fill="rgba(200,168,75,.3)" stroke="#c8a84b" stroke-width="1"/>
+        <line x1="275" y1="122" x2="260" y2="145" stroke="rgba(200,168,75,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- Wave lines -->
+        <path d="M80 90 Q100 80 120 90 Q140 100 160 90" stroke="rgba(30,184,204,.4)" stroke-width="1" fill="none"/>
+        <path d="M80 105 Q100 95 120 105 Q140 115 160 105" stroke="rgba(30,184,204,.3)" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="svc-banner-icon">🏃</div>
+        <div class="svc-num-bg">02</div>
+        <div class="svc-num-label">02</div>
+        <div class="svc-badge tl">★ Featured</div>
+      </div>
+      <div class="svc-body">
+        <h3>MSK &amp; Sports Medicine</h3>
+        <p>Shoulder, knee, hip, ankle — PRP therapy, hydrodistension, tendon fenestration and joint injections for athletes and active individuals.</p>
+        <div class="svc-tags"><span class="st">PRP Therapy</span><span class="st">Joint Injections</span><span class="st">Tendinopathy</span><span class="st">Sports Injury</span></div>
+      </div>
+    </div>
+
+    <!-- ONCOLOGY -->
+    <div class="svc-card reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg3" cx="50%" cy="50%"><stop offset="0%" stop-color="#2a0d0d"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg3)"/>
+        <!-- CT scan rings representation -->
+        <circle cx="200" cy="100" r="75" fill="none" stroke="rgba(192,57,43,.15)" stroke-width="1"/>
+        <circle cx="200" cy="100" r="55" fill="none" stroke="rgba(192,57,43,.2)" stroke-width="1"/>
+        <circle cx="200" cy="100" r="35" fill="none" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <!-- Tumour target -->
+        <circle cx="200" cy="100" r="20" fill="rgba(192,57,43,.18)" stroke="rgba(200,168,75,.5)" stroke-width="1.5"/>
+        <circle cx="200" cy="100" r="8" fill="rgba(192,57,43,.35)" stroke="#c8a84b" stroke-width="1"/>
+        <!-- Ablation lines -->
+        <line x1="200" y1="100" x2="240" y2="60" stroke="#e8c97a" stroke-width="1.5" opacity=".7"/>
+        <line x1="200" y1="100" x2="250" y2="115" stroke="#1eb8cc" stroke-width="1.5" opacity=".6"/>
+        <line x1="200" y1="100" x2="235" y2="145" stroke="#e8c97a" stroke-width="1.5" opacity=".5"/>
+        <!-- Cross hairs -->
+        <line x1="200" y1="20" x2="200" y2="180" stroke="rgba(200,168,75,.15)" stroke-width=".8"/>
+        <line x1="120" y1="100" x2="280" y2="100" stroke="rgba(200,168,75,.15)" stroke-width=".8"/>
+        </svg>
+        <div class="svc-banner-icon">🎗️</div>
+        <div class="svc-num-bg">03</div>
+        <div class="svc-num-label">03</div>
+      </div>
+      <div class="svc-body">
+        <h3>Oncology Interventions</h3>
+        <p>Tumour ablation with RFA, Microwave and Laser — plus palliative pain management and image-guided biopsies, improving quality of life without surgery.</p>
+        <div class="svc-tags"><span class="st">Tumour Ablation</span><span class="st">Pain Management</span><span class="st">Biopsy</span><span class="st">Palliative</span></div>
+      </div>
+    </div>
+
+    <!-- THYROID -->
+    <div class="svc-card reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg4" cx="50%" cy="50%"><stop offset="0%" stop-color="#0d2030"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg4)"/>
+        <!-- Thyroid shape -->
+        <ellipse cx="175" cy="105" rx="45" ry="55" fill="rgba(18,130,143,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <ellipse cx="225" cy="105" rx="45" ry="55" fill="rgba(18,130,143,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <rect x="195" y="75" width="10" height="25" rx="3" fill="rgba(18,130,143,.2)" stroke="#1eb8cc" stroke-width="1"/>
+        <!-- Nodule highlight -->
+        <circle cx="175" cy="100" r="18" fill="rgba(200,168,75,.18)" stroke="#c8a84b" stroke-width="1.5"/>
+        <circle cx="175" cy="100" r="8" fill="rgba(200,168,75,.3)" stroke="#e8c97a" stroke-width="1"/>
+        <!-- RFA probe -->
+        <line x1="290" y1="60" x2="185" y2="102" stroke="#e8c97a" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="183" cy="102" r="4" fill="#e8c97a"/>
+        <!-- Heat waves -->
+        <circle cx="175" cy="100" r="25" fill="none" stroke="rgba(200,168,75,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+        <circle cx="175" cy="100" r="35" fill="none" stroke="rgba(200,168,75,.12)" stroke-width="1" stroke-dasharray="3,3"/>
+        <!-- Ultrasound screen hint -->
+        <rect x="50" y="70" width="80" height="60" rx="4" fill="rgba(7,16,30,.7)" stroke="rgba(18,130,143,.4)" stroke-width="1"/>
+        <path d="M60 110 Q90 85 120 110" stroke="#1eb8cc" stroke-width="1" fill="none"/>
+        <path d="M60 120 Q90 95 120 120" stroke="rgba(30,184,204,.5)" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="svc-banner-icon">🔬</div>
+        <div class="svc-num-bg">04</div>
+        <div class="svc-num-label">04</div>
+      </div>
+      <div class="svc-body">
+        <h3>Thyroid Interventions</h3>
+        <p>Non-surgical thyroid nodule treatment using RFA, Microwave and Laser ablation — shrinking nodules without a stitch, under live ultrasound guidance.</p>
+        <div class="svc-tags"><span class="st g">RFA</span><span class="st g">Microwave</span><span class="st g">Laser Ablation</span><span class="st g">No Surgery</span></div>
+      </div>
+    </div>
+
+    <!-- VARICOSE VEINS -->
+    <div class="svc-card reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg5" cx="50%" cy="50%"><stop offset="0%" stop-color="#1a0d2a"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg5)"/>
+        <!-- Vein network -->
+        <path d="M170 20 C170 20 175 60 180 80 C185 100 190 120 185 155 C183 170 180 185 180 190" stroke="rgba(18,130,143,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M220 20 C220 20 215 60 210 80 C205 100 200 120 215 155 C218 170 220 185 220 190" stroke="rgba(18,130,143,.45)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <!-- Varicose bulges -->
+        <ellipse cx="182" cy="90" rx="12" ry="8" fill="rgba(100,60,160,.4)" stroke="rgba(150,100,200,.5)" stroke-width="1.2"/>
+        <ellipse cx="212" cy="110" rx="10" ry="7" fill="rgba(100,60,160,.35)" stroke="rgba(150,100,200,.5)" stroke-width="1.2"/>
+        <ellipse cx="186" cy="130" rx="9" ry="6" fill="rgba(100,60,160,.3)" stroke="rgba(150,100,200,.4)" stroke-width="1.2"/>
+        <!-- Laser beam treatment -->
+        <line x1="290" y1="80" x2="182" y2="90" stroke="#e8c97a" stroke-width="1.5" opacity=".8"/>
+        <circle cx="182" cy="90" r="6" fill="rgba(200,168,75,.4)" stroke="#e8c97a" stroke-width="1"/>
+        <!-- After treatment vein (clean) -->
+        <path d="M260 20 C260 20 262 60 261 100 C260 140 260 170 260 190" stroke="rgba(30,184,204,.6)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="248" y="105" font-size="7" fill="rgba(30,184,204,.7)" font-family="DM Sans">After</text>
+        <text x="165" y="15" font-size="7" fill="rgba(200,168,75,.6)" font-family="DM Sans">Before</text>
+        </svg>
+        <div class="svc-banner-icon">🩸</div>
+        <div class="svc-num-bg">05</div>
+        <div class="svc-num-label">05</div>
+      </div>
+      <div class="svc-body">
+        <h3>Varicose Veins</h3>
+        <p>Endovenous Laser, Foam Sclerotherapy and Microwave ablation — walk in, walk out. Complete vein treatment with no general anaesthesia and no hospital stay.</p>
+        <div class="svc-tags"><span class="st">Endovenous Laser</span><span class="st">Sclerotherapy</span><span class="st">Microwave</span><span class="st">Walk-out</span></div>
+      </div>
+    </div>
+
+    <!-- IMAGING -->
+    <div class="svc-card reveal">
+      <div class="svc-banner">
+        <svg viewBox="0 0 400 200"><defs><radialGradient id="bg6" cx="50%" cy="50%"><stop offset="0%" stop-color="#0a1820"/><stop offset="100%" stop-color="#07101e"/></radialGradient></defs><rect width="400" height="200" fill="url(#bg6)"/>
+        <!-- MRI machine schematic -->
+        <rect x="80" y="55" width="240" height="110" rx="55" fill="none" stroke="rgba(18,130,143,.35)" stroke-width="2"/>
+        <rect x="95" y="70" width="210" height="80" rx="40" fill="none" stroke="rgba(18,130,143,.25)" stroke-width="1.5"/>
+        <!-- Scanner bore -->
+        <ellipse cx="200" cy="110" rx="40" ry="35" fill="rgba(7,16,30,.9)" stroke="rgba(30,184,204,.5)" stroke-width="1.5"/>
+        <ellipse cx="200" cy="110" rx="28" ry="24" fill="rgba(18,130,143,.12)" stroke="rgba(30,184,204,.3)" stroke-width="1"/>
+        <!-- Patient table -->
+        <rect x="130" y="107" width="140" height="8" rx="2" fill="rgba(200,168,75,.3)" stroke="#c8a84b" stroke-width=".8"/>
+        <!-- Scan lines -->
+        <line x1="130" y1="80" x2="270" y2="80" stroke="rgba(30,184,204,.2)" stroke-width=".8"/>
+        <line x1="130" y1="90" x2="270" y2="90" stroke="rgba(30,184,204,.18)" stroke-width=".8"/>
+        <line x1="130" y1="100" x2="160" y2="100" stroke="rgba(30,184,204,.15)" stroke-width=".8"/>
+        <line x1="240" y1="100" x2="270" y2="100" stroke="rgba(30,184,204,.15)" stroke-width=".8"/>
+        <!-- Signal waves -->
+        <path d="M55 110 Q75 90 95 110 Q115 130 135 110" stroke="rgba(200,168,75,.4)" stroke-width="1.2" fill="none"/>
+        <path d="M265 110 Q285 90 305 110 Q325 130 345 110" stroke="rgba(200,168,75,.4)" stroke-width="1.2" fill="none"/>
+        </svg>
+        <div class="svc-banner-icon">🩺</div>
+        <div class="svc-num-bg">06</div>
+        <div class="svc-num-label">06</div>
+      </div>
+      <div class="svc-body">
+        <h3>Diagnostic Imaging</h3>
+        <p>Full-spectrum MRI, CT, Ultrasound and Fluoroscopy reporting — specialist-read, same-day turnaround for sports injuries, spine and soft-tissue conditions.</p>
+        <div class="svc-tags"><span class="st">MRI</span><span class="st">CT Scan</span><span class="st">Ultrasound</span><span class="st">Fluoroscopy</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MSK SPOTLIGHT -->
+<section class="msk-sec" id="msk">
+  <div class="msk-visual reveal-l">
+    <div class="msk-diagram">
+      <div class="msk-pulse"></div>
+      <div class="msk-pulse"></div>
+      <div class="msk-pulse"></div>
+      <!-- Body skeleton SVG -->
+      <svg class="msk-body-svg" width="200" height="340" viewBox="0 0 200 340" fill="none">
+        <!-- Head -->
+        <ellipse cx="100" cy="30" rx="24" ry="28" stroke="rgba(30,184,204,.6)" stroke-width="1.5" fill="rgba(18,130,143,.1)"/>
+        <!-- Neck -->
+        <rect x="92" y="57" width="16" height="20" rx="2" stroke="rgba(30,184,204,.5)" stroke-width="1.5" fill="rgba(18,130,143,.08)"/>
+        <!-- Shoulders -->
+        <path d="M55 80 Q100 72 145 80" stroke="rgba(200,168,75,.7)" stroke-width="2" fill="none"/>
+        <!-- Ribcage/chest -->
+        <rect x="72" y="80" width="56" height="70" rx="6" stroke="rgba(30,184,204,.5)" stroke-width="1.5" fill="rgba(18,130,143,.1)"/>
+        <!-- Spine line -->
+        <line x1="100" y1="77" x2="100" y2="200" stroke="rgba(200,168,75,.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- Hips -->
+        <ellipse cx="100" cy="200" rx="40" ry="18" stroke="rgba(200,168,75,.6)" stroke-width="1.5" fill="rgba(200,168,75,.08)"/>
+        <!-- Left arm -->
+        <line x1="72" y1="85" x2="50" y2="135" stroke="rgba(30,184,204,.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="50" y1="135" x2="35" y2="180" stroke="rgba(30,184,204,.45)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Right arm -->
+        <line x1="128" y1="85" x2="150" y2="135" stroke="rgba(30,184,204,.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="150" y1="135" x2="165" y2="180" stroke="rgba(30,184,204,.45)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Left leg -->
+        <line x1="88" y1="217" x2="78" y2="285" stroke="rgba(30,184,204,.5)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="78" y1="285" x2="72" y2="335" stroke="rgba(30,184,204,.45)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Right leg -->
+        <line x1="112" y1="217" x2="122" y2="285" stroke="rgba(30,184,204,.5)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="122" y1="285" x2="128" y2="335" stroke="rgba(30,184,204,.45)" stroke-width="3" stroke-linecap="round"/>
+        <!-- Joint highlights -->
+        <circle cx="55" cy="80" r="8" fill="rgba(200,168,75,.15)" stroke="#c8a84b" stroke-width="1.5"/>
+        <circle cx="145" cy="80" r="8" fill="rgba(200,168,75,.15)" stroke="#c8a84b" stroke-width="1.5"/>
+        <circle cx="50" cy="135" r="7" fill="rgba(30,184,204,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <circle cx="150" cy="135" r="7" fill="rgba(30,184,204,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <circle cx="100" cy="200" r="10" fill="rgba(200,168,75,.2)" stroke="#c8a84b" stroke-width="1.5"/>
+        <circle cx="78" cy="285" r="9" fill="rgba(30,184,204,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <circle cx="122" cy="285" r="9" fill="rgba(30,184,204,.15)" stroke="#1eb8cc" stroke-width="1.2"/>
+        <!-- Annotation dots with pulses -->
+        <circle cx="55" cy="80" r="4" fill="#c8a84b"/>
+        <circle cx="145" cy="80" r="4" fill="#c8a84b"/>
+        <circle cx="100" cy="200" r="5" fill="#c8a84b"/>
+        <circle cx="78" cy="285" r="4" fill="#1eb8cc"/>
+        <circle cx="122" cy="285" r="4" fill="#1eb8cc"/>
+      </svg>
+      <div class="msk-badge-box">
+        <p>Complete Joint Coverage</p>
+        <strong>All Joints · All Ages</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="msk-content reveal-r">
+    <span class="s-tag">★ Featured Specialty</span>
+    <div class="s-ln"></div>
+    <h2 class="s-title">MSK &amp; Sports<br><em>Intervention</em> Clinic</h2>
+    <p class="s-desc">From elite athletes to everyday heroes — targeted healing for every joint, tendon and muscle. No surgery, no scar, no downtime. Just precision.</p>
+    <div class="msk-grid">
+      <div class="msk-item"><h5>💪 Shoulder</h5><p>Rotator cuff, subacromial bursa, AC joint, bicep tendon</p></div>
+      <div class="msk-item"><h5>🦵 Knee</h5><p>Intra-articular PRP, patella, meniscal, peri-patellar</p></div>
+      <div class="msk-item"><h5>🦶 Ankle &amp; Foot</h5><p>Plantar fascia, Achilles, tarsal tunnel interventions</p></div>
+      <div class="msk-item"><h5>🤸 Hip</h5><p>Hip joint, trochanteric bursa, piriformis injections</p></div>
+      <div class="msk-item"><h5>🎾 Elbow &amp; Wrist</h5><p>Tennis/golfer's elbow, carpal tunnel, tendinopathy</p></div>
+      <div class="msk-item"><h5>🏋️ Spine &amp; Paraspinal</h5><p>Trigger points, facet, SI joint, nerve interventions</p></div>
+    </div>
+    <div class="msk-cta">
+      <h4>Get Back in the Game</h4>
+      <p>Ultrasound-guided PRP, cortisone, prolotherapy — for every joint. Ask about our Sports Recovery Protocol.</p>
+      <a href="tel:+919897349734" class="btn-p">📞 Call +91 98973 49734</a>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech-sec" id="tech">
+  <div class="reveal" style="max-width:520px">
+    <span class="s-tag">Precision Technologies</span>
+    <div class="s-ln"></div>
+    <h2 class="s-title">Advanced <em>Ablation</em><br>Technologies</h2>
+    <p class="s-desc">The full spectrum of minimally invasive thermal ablation techniques, guided by live imaging — for outcomes that rival surgery without a single incision.</p>
+  </div>
+  <div class="tech-layout">
+    <!-- CSS art showcase panel -->
+    <div class="tech-showcase reveal-l">
+      <div class="tech-showcase-rings">
+        <div class="tsr"></div>
+        <div class="tsr"></div>
+        <div class="tsr"></div>
+      </div>
+      <div class="tech-showcase-art">
+        <span class="big-icon">⚡</span>
+        <div class="tech-showcase-label">Ablation Suite</div>
+        <div class="tech-showcase-sub">RFA · Microwave · Laser</div>
+      </div>
+      <div class="tech-showcase-bottom">
+        <p>Live imaging guidance on every procedure · Zero guesswork · Maximum precision</p>
+      </div>
+    </div>
+    <div class="tech-cards">
+      <div class="tech-card tc-rfa reveal">
+        <div class="tc-icon-box">⚡</div>
+        <div class="tc-body">
+          <h4>Radiofrequency Ablation (RFA)</h4>
+          <p>Electrical energy precisely heats and destroys targeted tissue — thyroid nodules, tumours and nerve pathways — with controlled, minimal surrounding spread.</p>
+          <span class="tc-tag">Thyroid · Tumour · Nerve</span>
+        </div>
+      </div>
+      <div class="tech-card tc-mw reveal">
+        <div class="tc-icon-box">📡</div>
+        <div class="tc-body">
+          <h4>Microwave Ablation (MWA)</h4>
+          <p>Faster, larger ablation zones with superior performance in vascular tissues — ideal for thyroid, liver and oncology targets.</p>
+          <span class="tc-tag">Thyroid · Liver · Oncology</span>
+        </div>
+      </div>
+      <div class="tech-card tc-laser reveal">
+        <div class="tc-icon-box">🔦</div>
+        <div class="tc-body">
+          <h4>Laser Ablation (LA)</h4>
+          <p>Ultra-thin fibre-optic laser precision — ideal for delicate structures, small nodules and endovenous varicose vein treatment.</p>
+          <span class="tc-tag">Veins · Nodules · Delicate Structures</span>
+        </div>
+      </div>
+      <div class="tech-card tc-spine reveal">
+        <div class="tc-icon-box">🎯</div>
+        <div class="tc-body">
+          <h4>Ultrasound &amp; Fluoroscopy Guidance</h4>
+          <p>Real-time live imaging ensures every needle, probe and catheter lands precisely — every procedure, every time, zero guesswork.</p>
+          <span class="tc-tag">All Procedures · Live Imaging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-sec" id="process">
+  <div class="reveal-l">
+    <span class="s-tag">Patient Journey</span>
+    <div class="s-ln"></div>
+    <h2 class="s-title">Simple.<br><em>Seamless.</em><br>Same Day.</h2>
+    <p class="s-desc">No surgical prep. No hospital ward. No overnight stay. Your entire treatment fits into a single day — most procedures complete in under an hour.</p>
+  </div>
+  <div class="steps reveal-r">
+    <div class="step"><span class="step-n">01</span><div class="step-body"><h4>Personal Consultation</h4><p>Dr. Koushik personally reviews your symptoms, history and imaging — and designs the exact intervention plan for you.</p></div></div>
+    <div class="step"><span class="step-n">02</span><div class="step-body"><h4>Arrive at the Clinic</h4><p>Visit Focus Diagnostics at Punjagutta or Kompally. No fasting needed for most procedures. No lengthy pre-admission forms.</p></div></div>
+    <div class="step"><span class="step-n">03</span><div class="step-body"><h4>Image-Guided Procedure</h4><p>Under live ultrasound or fluoroscopy, the procedure is completed with pinpoint accuracy in 15–45 minutes under local anaesthesia.</p></div></div>
+    <div class="step"><span class="step-n">04</span><div class="step-body"><h4>Brief Recovery</h4><p>A short observation period in our recovery area — then you walk out the door the same day, pain relieved.</p></div></div>
+    <div class="step"><span class="step-n">05</span><div class="step-body"><h4>Personal Follow-Up</h4><p>Dr. Koushik monitors your recovery and is available post-procedure for any questions — care doesn't end at the door.</p></div></div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations" style="background:var(--navy);padding:7rem 4rem">
+  <div class="reveal" style="max-width:520px;margin-bottom:1rem">
+    <span class="s-tag">Find Us</span>
+    <div class="s-ln"></div>
+    <h2 class="s-title">Two <em>Premium</em> Clinics<br>Across Hyderabad</h2>
+    <p class="s-desc">Both centres are fully equipped for diagnostic imaging and advanced minimally invasive interventions — directed by Dr. Koushik personally.</p>
+  </div>
+  <div class="loc-grid">
+
+    <div class="loc-card reveal">
+      <div class="loc-banner" style="background:linear-gradient(135deg,rgba(18,130,143,.18) 0%,rgba(7,16,30,.95) 70%)">
+        <svg viewBox="0 0 400 170" style="position:absolute;inset:0;width:100%;height:100%">
+          <defs><radialGradient id="lg1" cx="30%" cy="50%"><stop offset="0%" stop-color="rgba(18,130,143,.2)"/><stop offset="100%" stop-color="rgba(7,16,30,0)"/></radialGradient></defs>
+          <rect width="400" height="170" fill="url(#lg1)"/>
+          <!-- City/building silhouettes -->
+          <rect x="20" y="80" width="30" height="90" fill="rgba(18,130,143,.12)" stroke="rgba(18,130,143,.25)" stroke-width="1"/>
+          <rect x="55" y="60" width="25" height="110" fill="rgba(18,130,143,.1)" stroke="rgba(18,130,143,.2)" stroke-width="1"/>
+          <rect x="85" y="90" width="35" height="80" fill="rgba(18,130,143,.08)" stroke="rgba(18,130,143,.18)" stroke-width="1"/>
+          <rect x="310" y="70" width="28" height="100" fill="rgba(18,130,143,.1)" stroke="rgba(18,130,143,.2)" stroke-width="1"/>
+          <rect x="343" y="85" width="40" height="85" fill="rgba(18,130,143,.08)" stroke="rgba(18,130,143,.18)" stroke-width="1"/>
+          <!-- Grid -->
+          <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+          <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+          <line x1="0" y1="120" x2="400" y2="120" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+        </svg>
+        <div class="loc-banner-content">
+          <span class="loc-banner-icon">🏥</span>
+          <div class="loc-banner-name">Focus Diagnostics</div>
+        </div>
+        <div class="loc-badge">📍 Centre 01</div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-name">Focus Diagnostics</div>
+        <div class="loc-area">Punjagutta · Hyderabad</div>
+        <div class="loc-row"><span class="loc-ico">📍</span><p>Punjagutta, Hyderabad — centrally located, accessible from all major areas.</p></div>
+        <div class="loc-row"><span class="loc-ico">🕐</span><p>Mon – Sat: 9:00 AM – 6:00 PM · Sundays by appointment</p></div>
+        <div class="loc-row"><span class="loc-ico">✅</span><p>Full imaging · Spine &amp; MSK interventions · Ablation suite · Day Care</p></div>
+        <a href="tel:+919897349734" class="loc-btn">Book at Punjagutta</a>
+      </div>
+    </div>
+
+    <div class="loc-card reveal">
+      <div class="loc-banner" style="background:linear-gradient(135deg,rgba(200,168,75,.12) 0%,rgba(7,16,30,.95) 70%)">
+        <svg viewBox="0 0 400 170" style="position:absolute;inset:0;width:100%;height:100%">
+          <defs><radialGradient id="lg2" cx="70%" cy="50%"><stop offset="0%" stop-color="rgba(200,168,75,.18)"/><stop offset="100%" stop-color="rgba(7,16,30,0)"/></radialGradient></defs>
+          <rect width="400" height="170" fill="url(#lg2)"/>
+          <rect x="20" y="75" width="28" height="95" fill="rgba(200,168,75,.08)" stroke="rgba(200,168,75,.2)" stroke-width="1"/>
+          <rect x="53" y="55" width="22" height="115" fill="rgba(200,168,75,.06)" stroke="rgba(200,168,75,.15)" stroke-width="1"/>
+          <rect x="315" y="65" width="30" height="105" fill="rgba(200,168,75,.08)" stroke="rgba(200,168,75,.18)" stroke-width="1"/>
+          <rect x="350" y="80" width="38" height="90" fill="rgba(200,168,75,.06)" stroke="rgba(200,168,75,.15)" stroke-width="1"/>
+          <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+          <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+          <line x1="0" y1="120" x2="400" y2="120" stroke="rgba(200,168,75,.05)" stroke-width="1"/>
+        </svg>
+        <div class="loc-banner-content">
+          <span class="loc-banner-icon">🏥</span>
+          <div class="loc-banner-name">Focus Diagnostics</div>
+        </div>
+        <div class="loc-badge" style="background:var(--teal-lt)">📍 Centre 02</div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-name">Focus Diagnostics</div>
+        <div class="loc-area">Kompally · Hyderabad</div>
+        <div class="loc-row"><span class="loc-ico">📍</span><p>Kompally, Hyderabad — serving North Hyderabad, Secunderabad &amp; surroundings.</p></div>
+        <div class="loc-row"><span class="loc-ico">🕐</span><p>Mon – Sat: 9:00 AM – 6:00 PM · Sundays by appointment</p></div>
+        <div class="loc-row"><span class="loc-ico">✅</span><p>Full imaging · Thyroid &amp; oncology ablation · Varicose veins · Day Care</p></div>
+        <a href="tel:+919897349734" class="loc-btn">Book at Kompally</a>
+      </div>
+    </div>
+
+    <div class="phone-strip reveal">
+      <div>
+        <span class="ph-lbl">Call / WhatsApp — Both Locations</span>
+        <a href="tel:+919897349734" class="ph-num">+91 98973 49734</a>
+      </div>
+      <div style="text-align:center">
+        <p style="font-size:.79rem;color:var(--gray)">Available at both centres</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-lt);font-size:1.1rem">Focus Diagnostics · Punjagutta &amp; Kompally</p>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="tel:+919897349734" class="btn-p">📞 Call Now</a>
+        <a href="https://wa.me/919897349734" class="btn-o">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <span class="s-tag">Take the First Step</span>
+  <div class="s-ln" style="margin:0 auto 2rem"></div>
+  <h2 class="s-title reveal">You Deserve Care That<br>Doesn't <em>Cut You Open</em></h2>
+  <p class="s-desc reveal">Speak directly with Dr. Koushik — discover if a minimally invasive intervention is right for you. No referral needed. Same day appointments available.</p>
+  <div class="cta-btns reveal">
+    <a href="tel:+919897349734" class="btn-p">📞 Call +91 98973 49734</a>
+    <a href="https://wa.me/919897349734" class="btn-o">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">
+    <div class="nav-logo-main">Dr. Koushik</div>
+    <div class="nav-logo-sub" style="margin-top:.2rem">MSK &amp; Interventional Radiologist · Sports Diagnostic &amp; Minimally Invasive Clinics</div>
+    <p>Precision image-guided treatments for spine, MSK, oncology, thyroid and vascular conditions across Hyderabad.<br><br><strong style="color:var(--gold-lt)">Focus Diagnostics — Punjagutta &amp; Kompally</strong></p>
+  </div>
+  <div>
+    <h5>Services</h5>
+    <div class="f-links">
+      <a href="#services">Spine Interventions</a>
+      <a href="#msk">MSK &amp; Sports Medicine</a>
+      <a href="#services">Oncology Interventions</a>
+      <a href="#services">Thyroid Ablation (RFA/MW/Laser)</a>
+      <a href="#services">Varicose Veins</a>
+      <a href="#services">Diagnostic Imaging</a>
+    </div>
+  </div>
+  <div>
+    <h5>Visit Us</h5>
+    <div class="f-links">
+      <a href="#locations">Focus Diagnostics, Punjagutta</a>
+      <a href="#locations">Focus Diagnostics, Kompally</a>
+      <a href="tel:+919897349734">+91 98973 49734</a>
+      <a href="https://wa.me/919897349734">WhatsApp Us</a>
+    </div>
+  </div>
+</footer>
+<div class="foot-bot">
+  <p>© 2025 Dr. Koushik · MSK &amp; Interventional Radiologist · Sports Diagnostic, Intervention &amp; Minimally Invasive Clinics · Hyderabad</p>
+  <p>No Pain · No Scar · No Admission · Image-Guided Precision</p>
+</div>
+
+<a href="tel:+919897349734" class="float-btn">
+  <span class="ph-ico">📞</span>+91 98973 49734
+</a>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('vis'), i * 70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
